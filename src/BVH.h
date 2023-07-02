@@ -11,6 +11,11 @@ public:
     BV() 
         : tris(0)
     {}
+    ~BV()
+    {
+        delete tris;
+        tris = nullptr;
+    }
     BV(glm::dvec3& d1, glm::dvec3& d2, glm::dvec3& d3)
     {
         tris = new glm::dvec3[3];
@@ -111,7 +116,7 @@ public:
     }
 
     glm::dvec3 min_corner, max_corner;
-    glm::dvec3* tris;
+    glm::dvec3* tris = nullptr;
 };
 
 class BVH {
